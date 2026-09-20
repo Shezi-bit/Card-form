@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Cards & Form Modal</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <main class="app-container">
+        
+        <!-- CARDS VIEW PORTION -->
+        <section id="cardsSection" class="cards-wrapper ">
+            
+            <!-- Left Control Buttons -->
+            <div class="control-btn-group">
+                <button id="addBtn" class="circle-btn">+</button>
+                <button id="upBtn" class="circle-btn">&uarr;</button>
+                <button id="downBtn" class="circle-btn">&darr;</button>
+            </div>
+
+            <!-- Stacked Cards Container -->
+            <div class="cards-stack">
+                
+ 
+
+            </div>
+
+            <!-- Right Color Indicator Dots -->
+              <span class="dot dot-black"></span>
+                <span class="dot dot-purple"></span>
+                <span class="dot dot-orange"></span>
+                <span class="dot dot-teal"></span>
+            </div>
+
+        </section>
+
+        <!-- FORM PORTION (Hidden by default, shown when + is clicked) -->
+        <section id="formSection" class="form-wrapper Hide">
+            <div class="form-card">
+                <h2 class="form-title">New Call</h2>
+
+                <form>
+                    <div class="form-group">
+                        <label  for="imgUrl">Image URL</label>
+                        <input required type="text" id="imgUrl" placeholder="https://example.com/photo.jpg">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input required  type="text" id="fullName" placeholder="Enter full name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="homeTown">Home Town</label>
+                        <input required type="text" id="homeTown" placeholder="Enter home town">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="purpose">Purpose</label>
+                        <input required type="text" id="purpose" placeholder="e.g., Quick appointment note">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Category</label>
+                        <div class="radio-group">
+                            <label><input  type="radio" name="category" value="emergency"> Emergency</label>
+                            <label><input type="radio" name="category" value="important"> Important</label>
+                            <label><input   type="radio" name="category" value="urgent"> Urgent</label>
+                            <label><input type="radio" name="category" value="no-rush"> No Rush</label>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-dark w-full">Create Note</button>
+                        <button type="button" id="closeFormBtn" class="btn btn-danger w-full">Close</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>
