@@ -124,11 +124,14 @@ function showcards(){
    let cardsStackContainer = document.querySelector(".cards-stack");
 cardsStackContainer.innerHTML = "";
 
-    alltasks.forEach(function(task){
+    // alltasks.forEach(function(task){
 
         
 
     // 1. Root Container
+
+    let topcard=alltasks[0];
+
     const cardsStack = document.createElement("div");
     cardsStack.classList.add("cards-stack");
 
@@ -139,13 +142,13 @@ cardsStackContainer.innerHTML = "";
     // Avatar
     const avatar = document.createElement("img");
     avatar.classList.add("avatar");
-    avatar.src = task.imgUrl || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200";
+    avatar.src = topcard.imgUrl || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200";
     avatar.alt = "Avatar";
 
     // User Name
     const userName = document.createElement("h2");
     userName.classList.add("user-name");
-    userName.textContent = task.fullName;
+    userName.textContent = topcard.fullName;
 
     // Info Row: Home town
     const homeTownRow = document.createElement("div");
@@ -157,7 +160,7 @@ cardsStackContainer.innerHTML = "";
 
     const homeTownValue = document.createElement("span");
     homeTownValue.classList.add("value");
-    homeTownValue.textContent = task.homeTown;
+    homeTownValue.textContent = topcard.homeTown;
 
     homeTownRow.appendChild(homeTownLabel);
     homeTownRow.appendChild(homeTownValue);
@@ -172,7 +175,7 @@ cardsStackContainer.innerHTML = "";
 
     const purposeValue = document.createElement("span");
     purposeValue.classList.add("value");
-    purposeValue.textContent = task.purpose;
+    purposeValue.textContent = topcard.purpose;
 
     purposeRow.appendChild(purposeLabel);
     purposeRow.appendChild(purposeValue);
@@ -217,11 +220,56 @@ cardsStackContainer.innerHTML = "";
 
     cardsStackContainer.appendChild(cardsStack);
 
-    });
+    // });
 
 }
-
 showcards();
+
+//up and down buttons logic 
+
+const upBtn = document.querySelector("#upBtn");
+const downBtn = document.querySelector("#downBtn");
+
+upBtn.addEventListener("click",function(){
+
+    let alltasks = JSON.parse(localStorage.getItem("Tasks")) || [];
+
+   if(alltasks.length === 0 || alltasks.length === 1 ) return;
+   else{
+
+    let tasktogobehind=alltasks[0];
+    alltasks.shift();
+    alltasks.push(tasktogobehind);
+    localStorage.setItem("Tasks",JSON.stringify(alltasks));
+
+    showcards();
+
+    
+   }
+
+});
+
+downBtn.addEventListener("click",function(){
+
+    
+    let alltasks = JSON.parse(localStorage.getItem("Tasks")) || [];
+
+   if(alltasks.length === 0 || alltasks.length === 1 ) return;
+   else{
+
+    
+
+    let tasktoahead=alltasks[alltasks.length-1];
+    alltasks.pop();
+    alltasks.unshift(tasktoahead);
+    
+    localStorage.setItem("Tasks",JSON.stringify(alltasks));
+
+    showcards();
+   }
+
+
+});
 
 
 
