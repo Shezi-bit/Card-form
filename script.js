@@ -28,7 +28,7 @@ const submitBtn = document.querySelector('button[type="submit"]');
 function savetoLocalStorage(obj){
 
     if(localStorage.getItem("Tasks")===null){
-
+ // 
         let oldTasks=[];
         oldTasks.push(obj);
         localStorage.setItem("Tasks",JSON.stringify(oldTasks));
